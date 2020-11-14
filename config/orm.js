@@ -16,7 +16,7 @@ const orm = {
     //      * `insertOne()`
     insertOne: async function insertBurger() {
         try {
-            const results = await connection.query('INSERT INTO burgers SET ?', { insertBurger: burger_name, devoured: false })
+            const results = await connection.query('INSERT INTO burgers VAULES ?', { insertBurger: burger_name, devoured: false })
     }
         catch (error) {
             console.log(err)
