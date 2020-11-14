@@ -1,6 +1,30 @@
-// 3. Inside the `burgers_controller.js` file, import the following:
+//required packages
+const express = require('express');
+const burger = require('../models/burger')
+const router = express.Router();
 
-//    * Express
-//    * `burger.js`
+// 4. Create the `router` for the app 
 
-// 4. Create the `router` for the app, and export the `router` at the end of your file.
+// get route
+router.get('/', (req, res) => {
+    burger.selectAll((data) => {
+        res.render('index', { burger: data });
+    });
+});
+
+// post route
+router.post('/burgers', (req, res) => {
+    burger.insertOne([burger_name], [req.body.burger_name], data => {
+        res.redirect('/');
+    });
+});
+
+// put route
+router.put('/burgers/:id', (req, res) => {
+    burger.updateOne([burger_name], [req.body.burger_name], data => {
+        res.redirect('/');
+    });
+});
+
+// export the `router` at the end of your file
+module.exports = router;

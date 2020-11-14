@@ -6,30 +6,30 @@ const orm = {
 
     //      * `selectAll()`
     selectAll: async function selectAllBurgers() {
-        return new Promise((res, rej) => {
-            connection.query('SELECT * FROM burgers', function (err, results, fields) {
-                if (err) throw err;
-                res(results);
-            });
-        });
+        try {
+            const results = await connection.query('SELECT * FROM burgers')
+        }
+        catch (error) {
+            console.log(err)
+        }
     },
     //      * `insertOne()`
     insertOne: async function insertBurger() {
-        return new Promise((res, rej) => {
-            connection.query('INSERT INTO burgers SET ?', { insertBurger: burger_name, devoured: false }, function (err, results) {
-                if (err) throw err;
-                res(results);
-            });
-        });
+        try {
+            const results = await connection.query('INSERT INTO burgers SET ?', { insertBurger: burger_name, devoured: false })
+    }
+        catch (error) {
+            console.log(err)
+        }
     },
     //      * `updateOne()`
     updateOne: async function updateOne() {
-        return new Promise((res, rej) => {
-            connection.query('UPDATE burgers SET ? WHERE ?', [{ devoured: true }, { id: burgerId }], function (err, results) {
-                if (err) throw err;
-                res(results);
-            });
-        });
+        try {
+            results = await connection.query('UPDATE burgers SET ? WHERE ?', [{ devoured: true }, { id: burgerId }])
+        } catch (error) {
+            console.log(err)
+        }
+
     }
 };
 
