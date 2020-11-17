@@ -2,6 +2,7 @@
 
 // required packages
 const mysql = require('mysql');
+const { promisify } = require('util');
 
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -18,6 +19,7 @@ connection.connect(function(err) {
       return;
     }
     console.log("connected as id " + connection.threadId);
+
   });
 
 //    * Export the connection.

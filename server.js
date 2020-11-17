@@ -11,11 +11,6 @@ const PORT = process.env.PORT || 8080;
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-// route for handlebars
-app.get('/', (req, res) => {
-    res.render('index');
-});
-
 app.use('/', require('./controllers/burgers_controller'));
 
 // server listener

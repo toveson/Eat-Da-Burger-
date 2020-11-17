@@ -1,5 +1,4 @@
 // required packages
-const { insertOne } = require('../config/orm');
 const orm = require('../config/orm');
 
 //* Also inside `burger.js`, create the code that will call the ORM functions using burger specific input for the ORM.
@@ -7,22 +6,16 @@ const orm = require('../config/orm');
 const burger = {
 
     // select all
-    selectAll: () => {
-        orm.selectAll((res) => {
-            await(res);
-        });
+    selectAll: async () => {
+        return await orm.selectAll();
     },
     // insert one
-    updateOne: () => {
-        orm.updateOne((res) => {
-            await(res);
-        });
+    insertOne: async (burger_name) => {
+       return await orm.insertOne(burger_name);
     },
     // update one
-    updateOne: () => {
-        orm.updateOne((res) => {
-            await(res);
-        });
+    updateOne: async () => {
+        return await orm.updateOne();
     }
 }
 

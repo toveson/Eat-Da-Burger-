@@ -6,24 +6,22 @@ const router = express.Router();
 // 4. Create the `router` for the app 
 
 // get route
-router.get('/', (req, res) => {
-    burger.selectAll((data) => {
-        res.render('index', { burger: data });
-    });
+router.get('/', async (req, res) => {
+    let data = await burger.selectAll()
+    res.render('index', { burgers: data });
 });
 
 // post route
-router.post('/burgers', (req, res) => {
-    burger.insertOne([burger_name], [req.body.burger_name], data => {
-        res.redirect('/');
-    });
+router.post('/burgers', async (req, res) => {
+    let burger_name = await burger.insertOne(burger_name);
+    console.log('HIT ME!')
+    res.redder('/')
 });
 
 // put route
-router.put('/burgers/:id', (req, res) => {
-    burger.updateOne([burger_name], [req.body.burger_name], data => {
-        res.redirect('/');
-    });
+router.put('/burgers/:id', async (req, res) => {
+    await burger.updateOne([burger_name], [req.body.burger_name]);
+    res.redirect('/')
 });
 
 // export the `router` at the end of your file

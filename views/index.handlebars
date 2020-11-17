@@ -5,16 +5,39 @@
 
 <div class="row">
     {{!-- eat these burgers --}}
-    <div class="col-md-4 p-3">to be eaten</div>
+    <div class="col-md-4 p-3">
+        <h2>Devour them!</h2>
+        <ul>
+            {{#each burgers}}
+            {{#unless devoured}}
+            <li>
+                {{burger_name}}
+                <button type="submit" class='devourButton' data-id="{{this.id}}">Devour</button>
+            </li>
+            {{/unless}}
+            {{/each}}
+        </ul>
+    </div>
 
     {{!-- make burgers --}}
     <form class="col-md-4 p-3">
         <div class="form-group">
-            <label for="exampleInputEmail1">What burger would you like to make</label>
-            <input class="form-control" id="burgerMaker">
+            <label>What burger would you like to make?</label>
+            <input class="form-control">
         </div>
         <button type="submit" class="btn btn-primary">Make-Da-Burger!</button>
     </form>
+
     {{!-- You ate these burgers, are you full yet? --}}
-    <div class="col-md-4 p-3">eaten burgers</div>
+    <div class="col-md-4 p-3">
+        <h2 class="">eaten burgers</h2>
+        {{#each burgers}}
+        {{#if devoured}}
+        <ul>
+            {{burger_name}}
+        </ul>
+        {{/if}}
+        {{/each}}
+
+    </div>
 </div>

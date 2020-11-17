@@ -1,5 +1,9 @@
 //    * Import (require) `connection.js` into `orm.js`
 const connection = require('../config/connection');
+const { promisify } = require('util');
+
+const promiseQuery = promisify(connection.query).bind(connection);
+const queryEnd = promisify(connection.end).bind(connection);
 
 //    * In the `orm.js` file, create the methods that will execute the necessary MySQL commands in the controllers. These are the methods you will need to use in order to retrieve and store data in your database.
 const orm = {
@@ -7,16 +11,19 @@ const orm = {
     //      * `selectAll()`
     selectAll: async function selectAllBurgers() {
         try {
-            const results = await connection.query('SELECT * FROM burgers')
+            const results = await promiseQuery('SELECT * FROM burgers')
+            return results;
         }
         catch (error) {
             console.log(err)
         }
     },
     //      * `insertOne()`
-    insertOne: async function insertBurger() {
+    insertOne: async function insertBurger(burger_name) {
         try {
-            const results = await connection.query('INSERT INTO burgers VAULES ?', { insertBurger: burger_name, devoured: false })
+            const results = await promiseQuery('INSERT INTO burgers VAULES ?', { insertBurger: burger_name, devoured: false })
+            console.log(results)
+            return results;
     }
         catch (error) {
             console.log(err)
@@ -25,7 +32,8 @@ const orm = {
     //      * `updateOne()`
     updateOne: async function updateOne() {
         try {
-            results = await connection.query('UPDATE burgers SET ? WHERE ?', [{ devoured: true }, { id: burgerId }])
+            results = await promiseQuery('UPDATE burgers SET ? WHERE ?', [{ devoured: true }, { id: burgerId }])
+            return results;
         } catch (error) {
             console.log(err)
         }
@@ -33,5 +41,9 @@ const orm = {
     }
 };
 
+
+process.on('beforeExit', () => {
+    queryEnd();
+})
 //    * Export the ORM object in `module.exports`.
 module.exports = orm;
