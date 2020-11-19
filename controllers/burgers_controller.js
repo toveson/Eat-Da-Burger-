@@ -13,15 +13,15 @@ router.get('/', async (req, res) => {
 
 // post route
 router.post('/burgers', async (req, res) => {
-    let burger_name = await burger.insertOne(burger_name);
-    console.log('HIT ME!')
-    res.redder('/')
+    await burger.insertOne(req.body.burger_name);
+    res.redirect('/');
 });
 
 // put route
 router.put('/burgers/:id', async (req, res) => {
+    console.log('hit me');
     await burger.updateOne([burger_name], [req.body.burger_name]);
-    res.redirect('/')
+    res.redirect('/');
 });
 
 // export the `router` at the end of your file

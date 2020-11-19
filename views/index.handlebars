@@ -12,7 +12,7 @@
             {{#unless devoured}}
             <li>
                 {{burger_name}}
-                <button type="submit" class='devourButton' data-id="{{this.id}}">Devour</button>
+                <button type="submit" data-id="{{this.id}}" class="eat_me">Devour</button>
             </li>
             {{/unless}}
             {{/each}}
@@ -20,12 +20,12 @@
     </div>
 
     {{!-- make burgers --}}
-    <form class="col-md-4 p-3">
+    <form class="col-md-4 p-3" method="POST" action="/burgers">
         <div class="form-group">
             <label>What burger would you like to make?</label>
-            <input class="form-control">
+            <input class="form-control"  name="burger_name">
         </div>
-        <button type="submit" class="btn btn-primary">Make-Da-Burger!</button>
+        <button type="submit" class="btn btn-primary" id="burgerMaker">Make-Da-Burger!</button>
     </form>
 
     {{!-- You ate these burgers, are you full yet? --}}

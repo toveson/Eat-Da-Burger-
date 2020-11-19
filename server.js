@@ -7,6 +7,11 @@ const app = express();
 
 const PORT = process.env.PORT || 8080;
 
+// express middleware
+app.use(express.urlencoded({
+    extended: true
+}))
+
 // setting the view engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');

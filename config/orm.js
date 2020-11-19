@@ -21,12 +21,12 @@ const orm = {
     //      * `insertOne()`
     insertOne: async function insertBurger(burger_name) {
         try {
-            const results = await promiseQuery('INSERT INTO burgers VAULES ?', { insertBurger: burger_name, devoured: false })
+            const results = await promiseQuery('INSERT INTO burgers (burger_name, devoured) VALUES (?, ?)', [ burger_name, false ])
             console.log(results)
             return results;
     }
         catch (error) {
-            console.log(err)
+            console.log(error);
         }
     },
     //      * `updateOne()`
