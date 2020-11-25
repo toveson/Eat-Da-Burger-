@@ -19,9 +19,9 @@ router.post('/burgers', async (req, res) => {
 
 // put route
 router.put('/burgers/:id', async (req, res) => {
-    console.log('hit me');
-    await burger.updateOne([burger_name], [req.body.burger_name]);
-    res.redirect('/');
+    let id = (req.params.id);
+    await burger.updateOne(id);
+    res.send('okay');
 });
 
 // export the `router` at the end of your file

@@ -12,6 +12,9 @@ app.use(express.urlencoded({
     extended: true
 }))
 
+// express static 
+app.use(express.static('public'));
+
 // setting the view engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');

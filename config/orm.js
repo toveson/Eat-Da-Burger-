@@ -22,25 +22,23 @@ const orm = {
     insertOne: async function insertBurger(burger_name) {
         try {
             const results = await promiseQuery('INSERT INTO burgers (burger_name, devoured) VALUES (?, ?)', [ burger_name, false ])
-            console.log(results)
             return results;
-    }
+        }
         catch (error) {
             console.log(error);
         }
     },
     //      * `updateOne()`
-    updateOne: async function updateOne() {
+    updateOne: async function updateOne(id) {
         try {
-            results = await promiseQuery('UPDATE burgers SET ? WHERE ?', [{ devoured: true }, { id: burgerId }])
+            const results = await promiseQuery('UPDATE burgers SET ? WHERE ?', [{ devoured: true }, { id: id }])
+            console.log(results)
             return results;
         } catch (error) {
-            console.log(err)
+            console.log(error)
         }
-
     }
 };
-
 
 process.on('beforeExit', () => {
     queryEnd();

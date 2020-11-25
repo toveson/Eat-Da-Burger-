@@ -14,8 +14,8 @@ const burger = {
        return await orm.insertOne(burger_name);
     },
     // update one
-    updateOne: async () => {
-        return await orm.updateOne();
+    updateOne: async (id) => {
+        return await orm.updateOne(id);
     }
 }
 
