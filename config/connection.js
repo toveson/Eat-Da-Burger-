@@ -1,13 +1,12 @@
-//    * Inside the `connection.js` file, setup the code to connect Node to MySQL.
-
 // required packages
 const mysql = require('mysql');
-const { promisify } = require('util');
 
-
+// why wont my Jaws connection work?
 if (process.env.JAWSDB_URL) {
   connection = mysql.createConnection(process.env.JAWSDB_URL);
 } else {
+
+  // if I enter my jaws DB info in here it works withough a problem
   connection = mysql.createConnection({
     host: 'localhost',
     port: 3306,
@@ -24,7 +23,6 @@ connection.connect(function (error) {
     return;
   }
   console.log("connected as id " + connection.threadId);
-
 });
 
 //    * Export the connection.
