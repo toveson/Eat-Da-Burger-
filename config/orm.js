@@ -15,7 +15,7 @@ const orm = {
             return results;
         }
         catch (error) {
-            console.log(err)
+            console.log(error)
         }
     },
     //      * `insertOne()`
