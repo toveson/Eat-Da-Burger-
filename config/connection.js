@@ -1,11 +1,11 @@
 // required packages
 const mysql = require('mysql');
 
-console.log('Jawsdb url: ' + process.env.JAWSDB_URL)
+console.log('Jawsdb url: ' + process.env.JAWSBD_URL)
 
 // why wont my Jaws connection work?
-if (process.env.JAWSDB_URL) {
-  connection = mysql.createConnection(process.env.JAWSDB_URL);
+if (process.env.JAWSBD_URL) {
+  connection = mysql.createConnection(process.env.JAWSBD_URL);
 } else {
 
   // if I enter my jaws DB info in here it works withough a problem
