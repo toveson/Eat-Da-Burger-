@@ -3,8 +3,6 @@ const express = require('express');
 const burger = require('../models/burger')
 const router = express.Router();
 
-// 4. Create the `router` for the app 
-
 // get route
 router.get('/', async (req, res) => {
     let data = await burger.selectAll()
@@ -24,5 +22,5 @@ router.put('/burgers/:id', async (req, res) => {
     res.send('okay');
 });
 
-// export the `router` at the end of your file
+// export the router
 module.exports = router;

@@ -5,10 +5,8 @@ const { promisify } = require('util');
 const promiseQuery = promisify(connection.query).bind(connection);
 const queryEnd = promisify(connection.end).bind(connection);
 
-//    * In the `orm.js` file, create the methods that will execute the necessary MySQL commands in the controllers. These are the methods you will need to use in order to retrieve and store data in your database.
 const orm = {
-
-    //      * `selectAll()`
+    // select All
     selectAll: async function selectAllBurgers() {
         try {
             const results = await promiseQuery('SELECT * FROM burgers')
@@ -18,7 +16,7 @@ const orm = {
             console.log(error)
         }
     },
-    //      * `insertOne()`
+    // insert One
     insertOne: async function insertBurger(burger_name) {
         try {
             const results = await promiseQuery('INSERT INTO burgers (burger_name, devoured) VALUES (?, ?)', [ burger_name, false ])
@@ -28,7 +26,7 @@ const orm = {
             console.log(error);
         }
     },
-    //      * `updateOne()`
+    // update One
     updateOne: async function updateOne(id) {
         try {
             const results = await promiseQuery('UPDATE burgers SET ? WHERE ?', [{ devoured: true }, { id: id }])
@@ -43,5 +41,5 @@ const orm = {
 process.on('beforeExit', () => {
     queryEnd();
 })
-//    * Export the ORM object in `module.exports`.
+// Export the ORM
 module.exports = orm;

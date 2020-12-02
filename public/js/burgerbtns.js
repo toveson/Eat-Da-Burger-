@@ -1,5 +1,5 @@
 // devour button
-// console.log($('.eat_me'));
+
 $('.eat_me').each(function() {
     $(this).on('click', (event) => {
         event.preventDefault();

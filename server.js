@@ -4,7 +4,6 @@ const exphbs = require('express-handlebars');
 
 // global vars 
 const app = express();
-
 const PORT = process.env.PORT || 8080;
 
 // express middleware
