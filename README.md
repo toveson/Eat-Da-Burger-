@@ -2,6 +2,7 @@
 
 ## Description
 
+A simple one page app that allows the user to enter new burger names. The user can also eat created burgers to move then to the devoured burgers area.
 
 Link to live site: [Eat-Da-Burger-!](https://calm-fortress-81607.herokuapp.com/)
 
